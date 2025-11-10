@@ -4,7 +4,7 @@ import {pollServices} from "../../services/pollServices";
 import { pollSchema, pollType } from "@repo/validation";
 import {actionResponse} from "@repo/validation";
 
-export async function pollActions(data: pollType): Promise<actionResponse> {
+export async function createPoll(data: pollType): Promise<actionResponse> {
     try {
     const validated = pollSchema.safeParse(data);
     if (!validated.success) {
@@ -23,7 +23,7 @@ export async function pollActions(data: pollType): Promise<actionResponse> {
         await pollServices.createPoll(validated.data);
         return { success: true, message: "Poll created successfully" };
     } catch (error) {
-        console.error("[pollActions] Error:", error);
+        console.error("[createPoll] Error:", error);
         return { success: false, error: "Internal server error" };
     }
 }
