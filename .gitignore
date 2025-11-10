@@ -1,11 +1,9 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # Dependencies
-node_modules
-.pnp
+node_modules/
+.pnp/
 .pnp.js
 
-# Local env files
+# Local environment files (never commit secrets)
 .env
 .env.local
 .env.development.local
@@ -13,29 +11,48 @@ node_modules
 .env.production.local
 
 # Testing
-coverage
+coverage/
 
-# Turbo
-.turbo
+# Turbo / Monorepo Cache
+.turbo/
+turbo/
 
 # Vercel
-.vercel
+.vercel/
 
 # Build Outputs
 .next/
 out/
-build
-dist
+build/
+dist/
+
+# Prisma
+.prisma/
+**/*.db
+**/*.sqlite
+prisma/dev.db
+prisma/migrations/dev.db
 
 # Docker
-docker-compose.yml
+# Keep main docker-compose.yml in Git, ignore local overrides
+docker-compose.override.yml
+*.pid
+*.sock
 
-
-# Debug
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Misc
+# OS / Editor Specific
 .DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Security Keys
 *.pem
+*.key
+*.cert
